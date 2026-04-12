@@ -4,11 +4,14 @@ from agent import agent
 st.set_page_config(page_title="FarmAssist AI", layout="centered")
 
 st.title("🌾 FarmAssist AI")
-st.write("Your smart agriculture assistant")
+st.markdown("### Smart Agriculture Assistant for Farmers 🇮🇳")
 
-query = st.text_input("Ask your question:")
+st.write("Ask about crops, soil, fertilizers, or seasons")
+
+query = st.text_input("Enter your question:")
 
 if st.button("Get Advice"):
     if query:
-        response = agent(query)
+        with st.spinner("Analyzing..."):
+            response = agent(query)
         st.success(response)
