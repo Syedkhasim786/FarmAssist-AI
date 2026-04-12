@@ -1,28 +1,13 @@
-def get_crop_recommendation(query):
-    query = query.lower()
+import requests
 
-    if "black soil" in query:
-        return "Cotton, soybean, and sunflower grow well in black soil."
-    elif "sandy" in query:
-        return "Groundnut, watermelon, and coconut are suitable for sandy soil."
-    elif "loamy" in query:
-        return "Wheat, sugarcane, rice, and vegetables grow well in loamy soil."
-    else:
-        return "Please specify soil type (black, sandy, loamy) for better advice."
+def get_weather(city="Hyderabad"):
+    api_key = "YOUR_API_KEY"  # get from OpenWeather
+    url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
 
-
-def get_season_advice(query):
-    query = query.lower()
-
-    if "summer" in query:
-        return "In summer, grow crops like maize, cotton, and groundnut. Ensure proper irrigation."
-    elif "winter" in query:
-        return "In winter, crops like wheat, mustard, and barley are suitable."
-    elif "rainy" in query or "monsoon" in query:
-        return "During monsoon, rice, maize, and pulses grow well."
-    else:
-        return "Specify season (summer, winter, rainy) for better advice."
-
-
-def get_fertilizer_advice(query):
-    return "Use nitrogen-rich fertilizers for leafy crops and phosphorus for root development. Organic compost is always beneficial."
+    try:
+        data = requests.get(url).json()
+        temp = data["main"]["temp"]
+        weather = data["weather"][0]["description"]
+        return f"Current weather in {city}: {temp}°C, {weather}"
+    except:
+        return "Unable to fetch weather data"
