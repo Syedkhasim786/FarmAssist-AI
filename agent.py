@@ -19,8 +19,14 @@ def agent(query, lang="english"):
     elif "fertilizer" in q:
         response = get_fertilizer_advice(query)
 
+    # ✅ Improved fallback (what you wanted)
     else:
-        response = "I can help with crops, soil, weather, fertilizer, and predictions."
+        if lang == "telugu":
+            response = "క్షమించండి, దీనిపై నాకు సమాచారం లేదు. దయచేసి పంటలు, మట్టి, వాతావరణం లేదా ఎరువుల గురించి అడగండి."
+        elif lang == "hindi":
+            response = "क्षमा करें, मुझे इस विषय में जानकारी नहीं है। कृपया फसल, मिट्टी, मौसम या उर्वरक के बारे में पूछें।"
+        else:
+            response = "Sorry, I don't have information on that. Please ask about crops, soil, weather, fertilizer, or crop prediction."
 
     response = translate_response(response, lang)
     save_to_db(query, response)
