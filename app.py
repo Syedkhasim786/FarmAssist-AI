@@ -4,14 +4,15 @@ from agent import agent
 st.set_page_config(page_title="FarmAssist AI", layout="centered")
 
 st.title("🌾 FarmAssist AI")
-st.markdown("### Smart Agriculture Assistant for Farmers 🇮🇳")
+st.markdown("### Smart Agriculture Assistant 🇮🇳")
 
-st.write("Ask about crops, soil, fertilizers, or seasons")
+# Language selection
+lang = st.selectbox("Select Language", ["english", "hindi", "telugu"])
 
-query = st.text_input("Enter your question:")
+query = st.text_input("Ask your question:")
 
 if st.button("Get Advice"):
     if query:
         with st.spinner("Analyzing..."):
-            response = agent(query)
+            response = agent(query, lang)
         st.success(response)
