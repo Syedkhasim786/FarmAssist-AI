@@ -35,7 +35,7 @@ def get_fertilizer_advice(query):
 
 # 🌦️ Weather API
 def get_weather(city="Hyderabad"):
-    api_key = "YOUR_API_KEY"  # Replace this
+   api_key = "YOUR_API_KEY"
     url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
 
     try:
