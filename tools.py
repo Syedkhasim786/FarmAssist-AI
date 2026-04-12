@@ -1,6 +1,5 @@
 import requests
 
-# 🌱 Crop Recommendation
 def get_crop_recommendation(query):
     query = query.lower()
 
@@ -14,7 +13,6 @@ def get_crop_recommendation(query):
         return "Please specify soil type (black, sandy, loamy)."
 
 
-# 🌦️ Season Advice
 def get_season_advice(query):
     query = query.lower()
 
@@ -28,26 +26,14 @@ def get_season_advice(query):
         return "Specify season (summer, winter, rainy)."
 
 
-# 🌿 Fertilizer Advice
 def get_fertilizer_advice(query):
     return "Use nitrogen for leafy growth, phosphorus for roots, and compost for sustainability."
 
 
-# 🌦️ Weather API
 def get_weather(city="Hyderabad"):
-   api_key = "YOUR_API_KEY"
-    url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
-
-    try:
-        data = requests.get(url).json()
-        temp = data["main"]["temp"]
-        weather = data["weather"][0]["description"]
-        return f"Weather in {city}: {temp}°C, {weather}"
-    except:
-        return "Weather data not available."
+    return "Weather feature coming soon."
 
 
-# 📊 Crop Prediction
 def predict_crop(soil, season):
     soil = soil.lower()
     season = season.lower()
@@ -59,10 +45,9 @@ def predict_crop(soil, season):
     elif soil == "sandy" and season == "summer":
         return "Predicted crop: Groundnut"
     else:
-        return "Try rice or maize depending on conditions."
+        return "Try rice or maize."
 
 
-# 🌐 Language Translation
 def translate_response(text, lang):
     if lang == "telugu":
         return "తెలుగు: " + text
